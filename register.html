@@ -33,28 +33,32 @@
         
     </header>
     
-    <!-- Navbar Row - STICKY (Only this blue bar sticks) --><nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-md" id="sticky-navbar" style="z-index: 1020;">
+    <!-- Navbar Row - STICKY (Only this blue bar sticks) --><nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top shadow-md" id="sticky-navbar" style="z-index: 1020;">
         <div class="container-fluid">
             
-            <!-- Navbar Links: Always displayed side-by-side (flex-row flex-wrap) and centered --><div class="d-flex justify-content-center w-100" id="mainNavbar">
-               <ul class="navbar-nav d-flex flex-row flex-wrap justify-content-center">
+            <!-- Toggler for Mobile --><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar Links: Collapsible on mobile. Horizontal on desktop (md and up) --><div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Aboutus</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="research.html">Research</a>
+                        <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="events.html">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="register.html">Registration</a>
+                        <a class="nav-link active" aria-current="page" href="register.html">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="research.html">Research</a>
                     </li>
                 </ul>
             </div>
@@ -70,36 +74,42 @@
                     <h2 class="display-6 fw-bold text-center text-primary mb-4">Event Registration Form</h2>
                     <p class="text-center text-muted mb-4">Please fill out the form below to register for our upcoming events and seminars.</p>
                     
-                    <form>
+                    <!-- Success/Error Message Display -->
+                    <div id="form-status-message" class="alert d-none" role="alert"></div>
+
+                    <!-- Form Action now calls the global JS function handleFormSubmission(event) -->
+                    <!-- NOTE: REPLACE PLACEHOLDER ENDPOINT BELOW WITH YOUR ACTUAL REGISTRATION FORMSPREE ENDPOINT -->
+                    <form id="registration-form" action="https://formspree.io/f/xbjnygka" method="POST" onsubmit="handleFormSubmission(event)">
                         <div class="row g-3 mb-3">
                             <div class="col-md-6">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" required>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" required>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
                             </div>
                         </div>
                         
                         <div class="mb-3">
                             <label for="email" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <!-- _replyto is needed for Formspree to know where to send replies -->
+                            <input type="email" class="form-control" id="email" name="_replyto" required>
                         </div>
 
                         <div class="mb-4">
                             <label for="eventSelect" class="form-label">Select Event</label>
-                            <select class="form-select" id="eventSelect" required>
+                            <select class="form-select" id="eventSelect" name="eventSelected" required>
                                 <option selected disabled value="">Choose an Event...</option>
-                                <option>Webinar: AI in Diagnostics (Nov 15)</option>
-                                <option>Annual Research Symposium (Dec 10-12)</option>
-                                <option>Hands-on MRI Workshop (Jan 10)</option>
-                                <option>General Newsletter Subscription</option>
+                                <option value="AI Webinar">Webinar: AI in Diagnostics (Nov 15)</option>
+                                <option value="Symposium">Annual Research Symposium (Dec 10-12)</option>
+                                <option value="MRI Workshop">Hands-on MRI Workshop (Jan 10)</option>
+                                <option value="Newsletter">General Newsletter Subscription</option>
                             </select>
                         </div>
                         
                         <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" value="" id="privacyCheck" required>
+                            <input class="form-check-input" type="checkbox" value="agreed" id="privacyCheck" name="privacyAgreement" required>
                             <label class="form-check-label small text-muted" for="privacyCheck">
                                 I agree to the <a href="#" class="text-primary text-decoration-none">Privacy Policy</a> and authorize CMIS to contact me regarding this event.
                             </label>
@@ -121,7 +131,7 @@
                     <h5 class="fw-bold mb-3 text-warning">Quick Links</h5>
                     <ul class="list-unstyled d-flex justify-content-center flex-wrap">
                         <li class="mx-3"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-                        <li class="mx-3"><a href="about.html" class="text-white text-decoration-none">About us</a></li>
+                         <li class="mx-3"><a href="about.html" class="text-white text-decoration-none">About us</a></li>
                         <li class="mx-3"><a href="research.html" class="text-white text-decoration-none">Research</a></li>
                         <li class="mx-3"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
                     </ul>
@@ -137,5 +147,64 @@
     <!-- Bootstrap and Custom JS --><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" xintegrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/Qg4YwYxI5F0I+Qp6C19qEWpL8" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" xintegrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBav0nC+EkJXxvXyF9m/bQdYhQc08E+S3" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
+    
+    <!-- Inline Script for Form Submission Handler (Duplicated for reliability) -->
+    <script>
+        // --- 4. Registration Form Submission Handler (AJAX for Formspree) ---
+        async function handleFormSubmission(e) {
+            e.preventDefault(); // Stop the browser from redirecting
+
+            const form = e.target;
+            const statusMessage = document.getElementById('form-status-message');
+            
+            const data = new FormData(form);
+            const action = form.action;
+
+            // Clear previous messages and hide the status div
+            statusMessage.classList.add('d-none');
+            statusMessage.textContent = '';
+            
+            // Temporary button disable for user feedback
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Registering...';
+
+            try {
+                const response = await fetch(action, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json' // Formspree requirement for AJAX submission
+                    }
+                });
+
+                if (response.ok) {
+                    // Success message
+                    statusMessage.textContent = 'Registration Successful! You will receive a confirmation email shortly.';
+                    statusMessage.classList.remove('d-none', 'alert-danger');
+                    statusMessage.classList.add('alert-success');
+                    form.reset(); // Clear form fields on success
+                } else {
+                    // Error handling from Formspree
+                    const responseData = await response.json();
+                    let errorMessage = responseData.error || 'Oops! There was an error processing your registration.';
+                    
+                    statusMessage.textContent = errorMessage;
+                    statusMessage.classList.remove('d-none', 'alert-success');
+                    statusMessage.classList.add('alert-danger');
+                }
+            } catch (error) {
+                // Network error handling
+                console.error('Registration submission failed:', error);
+                statusMessage.textContent = 'Oops! Network error. Please check your connection and try again.';
+                statusMessage.classList.remove('d-none', 'alert-success');
+                statusMessage.classList.add('alert-danger');
+            } finally {
+                // Restore button state
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<i class="fas fa-check-circle me-2"></i> Submit Registration';
+            }
+        }
+    </script>
 </body>
 </html>

@@ -33,28 +33,32 @@
         
     </header>
     
-       <!-- Navbar Row - STICKY (Only this blue bar sticks) --><nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-md" id="sticky-navbar" style="z-index: 1020;">
+    <!-- Navbar Row - STICKY (Only this blue bar sticks) --><nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top shadow-md" id="sticky-navbar" style="z-index: 1020;">
         <div class="container-fluid">
             
-            <!-- Navbar Links: Always displayed side-by-side (flex-row flex-wrap) and centered --><div class="d-flex justify-content-center w-100" id="mainNavbar">
-               <ul class="navbar-nav d-flex flex-row flex-wrap justify-content-center">
+            <!-- Toggler for Mobile --><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar Links: Collapsible on mobile. Horizontal on desktop (md and up) --><div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Aboutus</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="research.html">Research</a>
+                        <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="events.html">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="register.html">Registration</a>
+                        <a class="nav-link" href="register.html">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link active" aria-current="page" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="research.html">Research</a>
                     </li>
                 </ul>
             </div>
@@ -96,8 +100,8 @@
                     <!-- Success/Error Message Display -->
                     <div id="form-status-message" class="alert d-none" role="alert"></div>
 
-                    <!-- Form Action is handled by JS listener now -->
-                    <form id="contact-form" action="https://formspree.io/f/xqayvvre" method="POST">
+                    <!-- Form Action now calls the global JS function handleFormSubmission(event) -->
+                    <form id="contact-form" action="https://formspree.io/f/xqayvvre" method="POST" onsubmit="handleFormSubmission(event)">
                         <div class="mb-3">
                             <label for="name" class="form-label">Full Name</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -131,6 +135,7 @@
                     <h5 class="fw-bold mb-3 text-warning">Quick Links</h5>
                     <ul class="list-unstyled d-flex justify-content-center flex-wrap">
                         <li class="mx-3"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                         <li class="mx-3"><a href="about.html" class="text-white text-decoration-none">About us</a></li>
                         <li class="mx-3"><a href="research.html" class="text-white text-decoration-none">Research</a></li>
                         <li class="mx-3"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
                     </ul>
@@ -146,5 +151,64 @@
     <!-- Bootstrap and Custom JS --><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" xintegrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/Qg4YwYxI5F0I+Qp6C19qEWpL8" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" xintegrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBav0nC+EkJXxvXyF9m/bQdYhQc08E+S3" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
+    
+    <!-- Inline Script for Form Submission Handler -->
+    <script>
+        // --- 4. Contact Form Submission Handler (AJAX for Formspree) ---
+        async function handleFormSubmission(e) {
+            e.preventDefault(); // Stop the browser from redirecting
+
+            const form = e.target;
+            const statusMessage = document.getElementById('form-status-message');
+            
+            const data = new FormData(form);
+            const action = form.action;
+
+            // Clear previous messages and hide the status div
+            statusMessage.classList.add('d-none');
+            statusMessage.textContent = '';
+            
+            // Temporary button disable for user feedback
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
+
+            try {
+                const response = await fetch(action, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json' // Formspree requirement for AJAX submission
+                    }
+                });
+
+                if (response.ok) {
+                    // Success message
+                    statusMessage.textContent = 'Message Sent Successfully! We will respond shortly.';
+                    statusMessage.classList.remove('d-none', 'alert-danger');
+                    statusMessage.classList.add('alert-success');
+                    form.reset(); // Clear form fields on success
+                } else {
+                    // Error handling from Formspree
+                    const responseData = await response.json();
+                    let errorMessage = responseData.error || 'Oops! There was an error submitting your form.';
+                    
+                    statusMessage.textContent = errorMessage;
+                    statusMessage.classList.remove('d-none', 'alert-success');
+                    statusMessage.classList.add('alert-danger');
+                }
+            } catch (error) {
+                // Network error handling
+                console.error('Form submission failed:', error);
+                statusMessage.textContent = 'Oops! Network error. Please check your connection and try again.';
+                statusMessage.classList.remove('d-none', 'alert-success');
+                statusMessage.classList.add('alert-danger');
+            } finally {
+                // Restore button state
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<i class="fas fa-paper-plane me-2"></i> Send Inquiry';
+            }
+        }
+    </script>
 </body>
-</html>"
+</html>

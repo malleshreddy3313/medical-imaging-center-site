@@ -33,28 +33,32 @@
         
     </header>
     
-    <!-- Navbar Row - STICKY (Only this blue bar sticks) --><nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-md" id="sticky-navbar" style="z-index: 1020;">
+    <!-- Navbar Row - STICKY (Only this blue bar sticks) --><nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top shadow-md" id="sticky-navbar" style="z-index: 1020;">
         <div class="container-fluid">
             
-            <!-- Navbar Links: Always displayed side-by-side (flex-row flex-wrap) and centered --><div class="d-flex justify-content-center w-100" id="mainNavbar">
-                <ul class="navbar-nav d-flex flex-row flex-wrap justify-content-center">
+            <!-- Toggler for Mobile --><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar Links: Hidden on mobile, opens vertically on collapse. Horizontal on desktop (md and up) --><div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Aboutus</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="research.html">Research</a>
+                        <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="events.html">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="register.html">Registration</a>
+                        <a class="nav-link" href="register.html">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="research.html">Research</a>
                     </li>
                 </ul>
             </div>
@@ -64,10 +68,12 @@
     <!-- Scrolling Upcoming Events Ticker - NON-STICKY (Scrolls off the screen) --><section id="event-ticker" class="bg-warning text-dark py-1 overflow-hidden shadow-sm">
         <div class="container-fluid">
             <div class="row">
+              
                 <div class="col-12">
                     <!-- The ticker-content element is where the JS applies the scrolling animation --><div class="d-flex align-items-center">
+                    
                         <span class="badge bg-danger me-3">UPCOMING</span>
-                        <marquee>
+                       <marquee>
                         <div class="ticker-content" style="white-space: nowrap;">
                             <span class="me-5">Webinar on AI in Diagnostics - Nov 15th, 2025 |</span>
                             <span class="me-5">Annual Research Symposium Registration Open! - Deadline Dec 1st, 2025 |</span>
@@ -83,11 +89,11 @@
 
     <!-- Main Content starts here --><main>
         
-        <!-- Hero Banner Section --> <section class="hero-banner text-white text-center d-flex align-items-center justify-content-center py-6 position-relative" style="background: url('/assets/images/bgimage2.avif') no-repeat center center; background-size: cover; min-height: 400px;">
+        <!-- Hero Banner Section --><section class="hero-banner text-white text-center d-flex align-items-center justify-content-center py-6 position-relative" style="background: url('/assets/images/bgimage2.avif') no-repeat center center; background-size: cover; min-height: 400px;">
             <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
-            <div class="container position-relative z-1"> <!-- z-1 to ensure content is above overlay --><h2 class="display-3 fw-light mb-2">Welcome to</h2>
+            <div class="container position-relative z-1"> <!-- z-1 to ensure content is above overlay --><h2 class="display-3 fw-light mb-2">Welcome to our Organisation</h2>
                 <h1 class="display-5 fw-bold text-warning mb-3">Center for Medical Imaging Studies</h1>
-                <p class="lead mb-4">Beyond Innovation</p>
+                <p class="lead mb-4">Pioneering Research, Clinical Excellence, and Advanced Diagnostics.</p>
                 <!-- Optional: Add a call to action button --><a href="about.html" class="btn btn-warning btn-lg mt-3 shadow">Learn More About Us</a>
             </div>
         </section>
@@ -141,7 +147,7 @@
                     <h5 class="fw-bold mb-3 text-warning">Quick Links</h5>
                     <ul class="list-unstyled d-flex justify-content-center flex-wrap">
                         <li class="mx-3"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-                        <li class="mx-3"><a href="about.html" class="text-white text-decoration-none">About us</a></li>
+                         <li class="mx-3"><a href="about.html" class="text-white text-decoration-none">About us</a></li>
                         <li class="mx-3"><a href="research.html" class="text-white text-decoration-none">Research</a></li>
                         <li class="mx-3"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
                     </ul>

@@ -14,16 +14,17 @@
 }
 
 body {
-    /* Padding-top removed from CSS/JS as header is no longer fixed-top */
+    /* Set padding dynamically via scripts.js, but set default font and background */
     font-family: 'Inter', sans-serif;
     background-color: #f8f9fa;
 }
 
 /* --- LOGO AND HEADER STYLING --- */
 
-/* Removed fixed-top compensation styles from #main-header */
+/* Ensures the header component is positioned correctly and layers above content */
 #main-header {
-    z-index: 1030; 
+    z-index: 1030; /* Higher than Bootstrap's navbar z-index */
+    background-color: white; /* Important for background of logos row */
 }
 
 /* Custom styling for the logo placeholders to give them a professional, themed look */
@@ -40,19 +41,20 @@ body {
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Soft shadow */
 }
 
-/* Organization Name Styling */
+/* Organization Name Styling - FIX: Ensure sans-serif font and primary blue color */
 .h4.fw-bold.text-primary {
     color: var(--bs-primary) !important; /* Use the main blue theme color */
     font-family: 'Inter', sans-serif; /* Enforce sans-serif font */
     font-weight: 700 !important; /* Make it bold */
 }
 
-/* Navbar appearance */
+/* Navbar appearance - FIX: Re-added standard padding for desktop separation */
 .navbar-dark .navbar-nav .nav-link {
     color: #ffffff;
     font-weight: 500;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    /* Use standard padding, Bootstrap's horizontal layout will handle the spacing */
+    padding-left: 1rem; 
+    padding-right: 1rem; 
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -66,8 +68,8 @@ body {
 /* --- EVENT SCROLLING TICKER --- */
 
 #event-ticker {
-    z-index: 1029;
-    /* Removed fixed positioning - it now flows naturally below the sticky navbar */
+    z-index: 1029; /* Just below the header */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .ticker-content {
@@ -127,9 +129,4 @@ footer a:hover {
     color: var(--bs-warning) !important;
 }
 
-/* --- RESPONSIVENESS --- */
-@media (max-width: 575px) {
-    .navbar-nav .nav-item {
-        margin: 0 0.5rem; 
-    }
-}
+/* Removed all custom mobile stacking CSS. Bootstrap collapse will handle it. */
