@@ -1,0 +1,135 @@
+/* Custom Stylesheet for Center for Medical Imaging Studies 
+    This file handles the overall medical theme, sticky header adjustments,
+    logo styling, and the event ticker animation.
+*/
+
+/* --- THEME COLORS --- */
+:root {
+    --bs-primary: #007bff; /* Standard Blue, good for medical/corporate */
+    --bs-secondary: #6c757d;
+    --bs-warning: #ffc107; /* Used for ticker/highlights */
+    --bs-success: #28a745;
+    --bs-light: #f8f9fa;
+    --bs-dark: #343a40;
+}
+
+body {
+    /* Padding-top removed from CSS/JS as header is no longer fixed-top */
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* --- LOGO AND HEADER STYLING --- */
+
+/* Removed fixed-top compensation styles from #main-header */
+#main-header {
+    z-index: 1030; 
+}
+
+/* Custom styling for the logo placeholders to give them a professional, themed look */
+.logo-placeholder {
+    height: 60px; /* Slightly larger logos */
+    width: 60px;
+    background-color: var(--bs-primary); /* Primary theme color */
+    color: white;
+    border-radius: 50%; /* Circle shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Soft shadow */
+}
+
+/* Organization Name Styling */
+.h4.fw-bold.text-primary {
+    color: var(--bs-primary) !important; /* Use the main blue theme color */
+    font-family: 'Inter', sans-serif; /* Enforce sans-serif font */
+    font-weight: 700 !important; /* Make it bold */
+}
+
+/* Navbar appearance */
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffffff;
+    font-weight: 500;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: var(--bs-warning);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+/* --- EVENT SCROLLING TICKER --- */
+
+#event-ticker {
+    z-index: 1029;
+    /* Removed fixed positioning - it now flows naturally below the sticky navbar */
+}
+
+.ticker-content {
+    /* Set display properties for the animation */
+    display: inline-block;
+    padding-right: 100%; /* Ensures the content fully disappears before looping */
+    will-change: transform; /* Performance optimization */
+}
+
+/* --- HERO BANNER --- */
+
+.hero-banner {
+    background: url('https://placehold.co/1200x500/007bff/ffffff?text=Medical+Research+Background') no-repeat center center/cover;
+    height: 50vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
+    position: relative;
+    margin-bottom: 2rem;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 40, 80, 0.5); /* Dark blue overlay for text contrast */
+}
+
+.hero-banner h2, .hero-banner h1 {
+    font-family: 'Georgia', serif; 
+}
+
+/* --- ACHIEVEMENTS CARDS --- */
+
+#achievements .card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(0, 123, 255, 0.1); /* Light blue border */
+    border-radius: 10px;
+}
+
+#achievements .card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+#achievements .card-body .fa-3x {
+    color: #004d99; /* Darker blue for icons */
+}
+
+/* --- FOOTER --- */
+
+footer a:hover {
+    color: var(--bs-warning) !important;
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 575px) {
+    .navbar-nav .nav-item {
+        margin: 0 0.5rem; 
+    }
+}

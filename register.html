@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - CMIS</title>
+    <!-- Bootstrap CSS --><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9O1+8WbHAWfK3+fQyqTzEAgpAIT2wK3YyYJ7+32sL45U9hQ4" crossorigin="anonymous">
+    <!-- Font Awesome (for icons) --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Custom CSS --><link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section (Branding Area - SCROLLS OFF) --><header id="main-header" class="shadow-sm">
+        
+        <!-- Top Header Row: Logos and Organization Name (Scrolls Off) --><div class="container-fluid py-2 bg-white border-bottom border-primary position-relative mb-0">
+            <div class="row align-items-center justify-content-center">
+                
+                <!-- Left Logo --><div class="position-absolute top-50 start-0 translate-middle-y ps-4 d-none d-sm-block" style="width: auto;">
+                    <div class="logo-placeholder">CMIS</div>
+                </div>
+                
+                <!-- Organization Name --><div class="col-12 text-center py-2 m-0">
+                    <h1 class="h4 fw-bold text-primary mb-0">Center for Medical Imaging Studies (CMIS)</h1>
+                    <p class="small text-muted mb-0">Innovation Beyond Imagination</p>
+                </div>
+                
+                <!-- Right Logo --><div class="position-absolute top-50 end-0 translate-middle-y pe-4 d-none d-sm-block" style="width: auto;">
+                    <div class="logo-placeholder"><i class="fas fa-microscope"></i></div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </header>
+    
+    <!-- Navbar Row - STICKY (Only this blue bar sticks) --><nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-md" id="sticky-navbar" style="z-index: 1020;">
+        <div class="container-fluid">
+            
+            <!-- Navbar Links: Always displayed side-by-side (flex-row flex-wrap) and centered --><div class="d-flex justify-content-center w-100" id="mainNavbar">
+               <ul class="navbar-nav d-flex flex-row flex-wrap justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Aboutus</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="research.html">Research</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Register.html">Registration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+
+    <!-- Main Content starts here: Registration Form --><main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0 rounded-3 p-4">
+                    <h2 class="display-6 fw-bold text-center text-primary mb-4">Event Registration Form</h2>
+                    <p class="text-center text-muted mb-4">Please fill out the form below to register for our upcoming events and seminars.</p>
+                    
+                    <form>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="eventSelect" class="form-label">Select Event</label>
+                            <select class="form-select" id="eventSelect" required>
+                                <option selected disabled value="">Choose an Event...</option>
+                                <option>Webinar: AI in Diagnostics (Nov 15)</option>
+                                <option>Annual Research Symposium (Dec 10-12)</option>
+                                <option>Hands-on MRI Workshop (Jan 10)</option>
+                                <option>General Newsletter Subscription</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" value="" id="privacyCheck" required>
+                            <label class="form-check-label small text-muted" for="privacyCheck">
+                                I agree to the <a href="#" class="text-primary text-decoration-none">Privacy Policy</a> and authorize CMIS to contact me regarding this event.
+                            </label>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-check-circle me-2"></i> Submit Registration</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer --><footer class="bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center mb-4">
+                    <h5 class="fw-bold mb-3 text-warning">Quick Links</h5>
+                    <ul class="list-unstyled d-flex justify-content-center flex-wrap">
+                        <li class="mx-3"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mx-3"><a href="about.html" class="text-white text-decoration-none">About us</a></li>
+                        <li class="mx-3"><a href="research.html" class="text-white text-decoration-none">Research</a></li>
+                        <li class="mx-3"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 text-center border-top border-secondary pt-3">
+                    <p class="mb-1">&copy; 2025 Center for Medical Imaging Studies. All rights reserved.</p>
+                    <p class="small text-muted">Visitors: <span id="visitor-count">Loading...</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap and Custom JS --><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" xintegrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/Qg4YwYxI5F0I+Qp6C19qEWpL8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" xintegrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBav0nC+EkJXxvXyF9m/bQdYhQc08E+S3" crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
