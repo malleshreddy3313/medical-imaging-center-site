@@ -49,9 +49,6 @@
                         <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="research.html">Research</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="events.html">Events</a>
                     </li>
                     <li class="nav-item">
@@ -60,11 +57,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="research.html">Research</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     
+
+
     <!-- Main Content starts here: Registration Selector --><main class="container py-5">
         <h2 class="display-5 fw-bold text-center text-primary mb-4">Select Your Registration Type</h2>
         <p class="lead text-center text-muted mb-5">Please select the category that applies to you to view relevant events and pricing.</p>
@@ -78,7 +80,7 @@
                      onclick="setRegistrationType('Student')">
                     <div class="card-body">
                         <i class="fas fa-user-graduate fa-4x text-primary mb-3"></i>
-                        <h4 class="card-title fw-bold">Student </h4>
+                        <h4 class="card-title fw-bold">Student / Scholar</h4>
                         <p class="card-text text-muted">For current B.Tech, M.Tech, Ph.D. students and research fellows.</p>
                         <button type="button" class="btn btn-primary mt-3">Select Category</button>
                     </div>
@@ -92,7 +94,7 @@
                      onclick="setRegistrationType('Professor/Other')">
                     <div class="card-body">
                         <i class="fas fa-chalkboard-teacher fa-4x text-success mb-3"></i>
-                        <h4 class="card-title fw-bold">Professor / Scholar / Other</h4>
+                        <h4 class="card-title fw-bold">Professor / Industry / Other</h4>
                         <p class="card-text text-muted">For Faculty, Industry Professionals, Doctors, and General Attendees.</p>
                         <button type="button" class="btn btn-success mt-3">Select Category</button>
                     </div>
@@ -121,6 +123,9 @@
               <form id="event-registration-form" action="https://formspree.io/f/xkgqdnjd" method="POST" onsubmit="handleFormSubmission(event)">
                   
                   <input type="hidden" id="regTypeHidden" name="Registration_Type" value="">
+                  
+                  <!-- FIX: Add hidden field to CC submission to cmis@gvpce.ac.in -->
+                  <input type="hidden" name="_cc" value="geethapavani@gvpce.ac.in">
                   
                   <!-- Event Selection (Dropdown) -->
                   <div class="mb-4">
@@ -234,7 +239,6 @@
                     <h5 class="fw-bold mb-3 text-warning">Quick Links</h5>
                     <ul class="list-unstyled d-flex justify-content-center flex-wrap">
                         <li class="mx-3"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-                        <li class="mx-3"><a href="about.html" class="text-white text-decoration-none">About us</a></li>
                         <li class="mx-3"><a href="research.html" class="text-white text-decoration-none">Research</a></li>
                         <li class="mx-3"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
                     </ul>
@@ -260,12 +264,14 @@
                 'Summer Internship: AI in Healthcare': 'Rs. 300/-',
                 'Symposium: Next-Gen VLSI Design': 'Rs. 100/-',
                 'MIAAI-2026 Workshop': 'Rs. 100/-',
+                'General Newsletter Subscription': 'Free', // Added for completeness
             
             },
             'Professor/Other': {
                 
                 'Symposium: Next-Gen VLSI Design': 'Rs. 500/-',
                 'MIAAI-2026 Workshop': 'Rs. 500/-',
+                'General Newsletter Subscription': 'Free', // Added for completeness
                
             }
         };
@@ -373,7 +379,7 @@
                 });
 
                 if (response.ok) {
-                    statusMessage.textContent = 'Registration Successful! You will receive a confirmation shortly.';
+                    statusMessage.textContent = 'Registration Successful!. You will receive a confirmation shortly.';
                     statusMessage.classList.remove('d-none', 'alert-danger');
                     statusMessage.classList.add('alert-success');
                     form.reset(); 
