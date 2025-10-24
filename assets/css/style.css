@@ -1,132 +1,166 @@
-/* Custom Stylesheet for Center for Medical Imaging Studies 
-    This file handles the overall medical theme, sticky header adjustments,
-    logo styling, and the event ticker animation.
-*/
+/* ==========================================================
+   Custom Stylesheet for Center for Medical Imaging Studies (CMIS)
+   Handles medical theme, sticky header, logo styling,
+   event ticker animation, hero section, and navbar design.
+   ========================================================== */
 
 /* --- THEME COLORS --- */
 :root {
-    --bs-primary: #007bff; /* Standard Blue, good for medical/corporate */
+    --bs-primary: #007bff; /* Medical Blue */
     --bs-secondary: #6c757d;
-    --bs-warning: #ffc107; /* Used for ticker/highlights */
+    --bs-warning: #ffc107; /* Accent yellow */
     --bs-success: #28a745;
     --bs-light: #f8f9fa;
     --bs-dark: #343a40;
 }
 
 body {
-    /* Set padding dynamically via scripts.js, but set default font and background */
     font-family: 'Inter', sans-serif;
-    background-color: #f8f9fa;
+    background-color: var(--bs-light);
+    color: var(--bs-dark);
 }
 
-/* --- LOGO AND HEADER STYLING --- */
-
-/* Ensures the header component is positioned correctly and layers above content */
+/* ==========================================================
+   HEADER SECTION
+   ========================================================== */
 #main-header {
-    z-index: 1030; /* Higher than Bootstrap's navbar z-index */
-    background-color: white; /* Important for background of logos row */
+    z-index: 1030;
+    background-color: #fff;
 }
 
-/* Custom styling for the logo placeholders to give them a professional, themed look */
 .logo-placeholder {
-    height: 60px; /* Slightly larger logos */
+    height: 60px;
     width: 60px;
-    background-color: var(--bs-primary); /* Primary theme color */
-    color: white;
-    border-radius: 50%; /* Circle shape */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Soft shadow */
 }
 
-/* Organization Name Styling - FIX: Ensure sans-serif font and primary blue color */
+.logo-placeholder img {
+    border-radius: 8px;
+    height: auto;
+    max-height: 80px;
+}
+
+/* Center Title Styling */
 .h4.fw-bold.text-primary {
-    color: var(--bs-primary) !important; /* Use the main blue theme color */
-    font-family: 'Inter', sans-serif; /* Enforce sans-serif font */
-    font-weight: 700 !important; /* Make it bold */
+    color: var(--bs-primary) !important;
+    font-weight: 700 !important;
 }
 
-/* Navbar appearance - FIX: Re-added standard padding for desktop separation */
-.navbar-dark .navbar-nav .nav-link {
-    color: #ffffff;
-    font-weight: 500;
-    /* Use standard padding, Bootstrap's horizontal layout will handle the spacing */
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    transition: background-color 0.3s, color 0.3s;
+/* ==========================================================
+   NAVBAR SECTION (Sticky)
+   ========================================================== */
+.navbar {
+    background-color: var(--bs-primary) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-dark .navbar-nav .nav-link:hover,
-.navbar-dark .navbar-nav .nav-link.active {
-    color: var(--bs-warning);
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
+/* --- UPDATED NAVBAR FONT SIZE --- */
+.navbar .nav-link {
+    font-size: 1.6rem !important;      /* Larger font size */
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    padding: 0.75rem 1.5rem !important;
+    letter-spacing: 0.4px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
 }
 
-/* --- EVENT SCROLLING TICKER --- */
+/* Hover + Active Styles */
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--bs-warning) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px;
+}
 
+/* Optional underline animation */
+.navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    width: 0;
+    height: 2px;
+    background: var(--bs-warning);
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+.navbar .nav-link:hover::after {
+    width: 50%;
+}
+
+/* Responsive tweak for smaller screens */
+@media (max-width: 768px) {
+    .navbar .nav-link {
+        font-size: 1.3rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+}
+
+/* ==========================================================
+   EVENT SCROLLING TICKER
+   ========================================================== */
 #event-ticker {
-    z-index: 1029; /* Just below the header */
+    z-index: 1029;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .ticker-content {
-    /* Set display properties for the animation */
     display: inline-block;
-    padding-right: 100%; /* Ensures the content fully disappears before looping */
-    will-change: transform; /* Performance optimization */
+    padding-right: 100%;
+    will-change: transform;
 }
 
-/* --- HERO BANNER --- */
-
+/* ==========================================================
+   HERO BANNER SECTION
+   ========================================================== */
 .hero-banner {
-    background: url('https://placehold.co/1200x500/007bff/ffffff?text=Medical+Research+Background') no-repeat center center/cover;
-    height: 50vh;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: var(--bs-light);
+}
+
+.image-showcase {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.image-showcase img {
+    border-radius: 8px;
+    height: 150px;
+    object-fit: cover;
+    width: 100%;
+    border: 2px solid #ddd;
+}
+
+/* ==========================================================
+   FOOTER SECTION
+   ========================================================== */
+footer {
+    background-color: var(--bs-dark);
     color: white;
-    text-shadow: 0 0 10px rgba(0,0,0,0.8);
-    position: relative;
-    margin-bottom: 2rem;
-}
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 40, 80, 0.5); /* Dark blue overlay for text contrast */
 }
 
-.hero-banner h2, .hero-banner h1 {
-    font-family: 'Georgia', serif; 
+footer a {
+    color: #fff;
+    transition: color 0.3s ease-in-out;
 }
-
-/* --- ACHIEVEMENTS CARDS --- */
-
-#achievements .card {
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid rgba(0, 123, 255, 0.1); /* Light blue border */
-    border-radius: 10px;
-}
-
-#achievements .card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
-}
-
-#achievements .card-body .fa-3x {
-    color: #004d99; /* Darker blue for icons */
-}
-
-/* --- FOOTER --- */
 
 footer a:hover {
-    color: var(--bs-warning) !important;
+    color: var(--bs-warning);
 }
 
-/* Removed all custom mobile stacking CSS. Bootstrap collapse will handle it. */
+/* ==========================================================
+   RESPONSIVENESS
+   ========================================================== */
+@media (max-width: 767px) {
+    .navbar-collapse .navbar-nav .nav-link {
+        text-align: center;
+        font-size: 1.3rem !important;
+        padding: 0.75rem 1rem !important;
+    }
+}
