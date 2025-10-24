@@ -16,7 +16,7 @@
             <div class="row align-items-center justify-content-center">
                 
                 <!-- Left Logo --><div class="position-absolute top-50 start-0 translate-middle-y ps-4 d-none d-sm-block" style="width: auto;">
-                    <div class="logo-placeholder"><img src='/assets/images/India logo[1].jpg' height="80"></div>
+                    <div class="logo-placeholder"><img src='/assets/images/India logo[1].jpg' height="80" onerror="this.onerror=null; this.src='https://placehold.co/80x80/007bff/ffffff?text=LOGO+1'"></div>
                 </div>
                 
                 <!-- Organization Name --><div class="col-12 text-center py-2 m-0">
@@ -25,7 +25,7 @@
                 </div>
                 
                 <!-- Right Logo --><div class="position-absolute top-50 end-0 translate-middle-y pe-4 d-none d-sm-block" style="width: auto;">
-                    <div class="logo-placeholder"><img src='/assets/images/cmis_logo.jpg' height="80"></div>
+                    <div class="logo-placeholder"><img src='/assets/images/cmis_logo.jpg' height="80" onerror="this.onerror=null; this.src='https://placehold.co/80x80/007bff/ffffff?text=LOGO+2'"></div>
                 </div>
                 
             </div>
@@ -64,67 +64,168 @@
             </div>
         </div>
     </nav>
-
-
-    <!-- Main Content starts here: Registration Form --><main class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card shadow-lg border-0 rounded-3 p-4">
-                    <h2 class="display-6 fw-bold text-center text-primary mb-4">Event Registration Form</h2>
-                    <p class="text-center text-muted mb-4">Please fill out the form below to register for our upcoming events and seminars.</p>
-                    
-                    <!-- Success/Error Message Display -->
-                    <div id="form-status-message" class="alert d-none" role="alert"></div>
-
-                    <!-- Form Action now calls the global JS function handleFormSubmission(event) -->
-                    <form id="registration-form" action="https://formspree.io/f/xkgqdnjd" method="POST" onsubmit="handleFormSubmission(event)">
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-6">
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" required>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <!-- _replyto is needed for Formspree to know where to send replies -->
-                            <input type="email" class="form-control" id="email" name="_replyto" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="eventSelect" class="form-label">Select Event</label>
-                            <select class="form-select" id="eventSelect" name="eventSelected" required>
-                                <option selected disabled value="">Choose an Event...</option>
-                                <optgroup label="Upcoming Internships">
-                                    <option value="Winter Internship: Verification of Digital System (19th Jan - 27th Feb 2026)">Winter Internship: Verification of Digital System (19th Jan - 27th Feb 2026)</option>
-                                    <option value="Summer Internship: AI in Healthcare (18th May - 26th June 2026)">Summer Internship: AI in Healthcare (18th May - 26th June 2026)</option>
-                                </optgroup>
-                                <optgroup label="Upcoming Workshops & Symposiums">
-                                    <option value="Symposium: Next-Gen VLSI Design (9th – 13th March 2026)">Symposium: Next-Gen VLSI Design (9th – 13th March 2026)</option>
-                                    <option value="MIAAI-2026 Workshop (20th – 24th July 2026)">MIAAI-2026 Workshop (20th – 24th July 2026)</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                        
-                        <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" value="agreed" id="privacyCheck" name="privacyAgreement" required>
-                            <label class="form-check-label small text-muted" for="privacyCheck">
-                                I agree to the <a href="#" class="text-primary text-decoration-none">Privacy Policy</a> and authorize CMIS to contact me regarding this event.
-                            </label>
-                        </div>
-                        
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-check-circle me-2"></i> Submit Registration</button>
-                        </div>
-                    </form>
+    
+    <!-- Main Content starts here: Registration Selector --><main class="container py-5">
+        <h2 class="display-5 fw-bold text-center text-primary mb-4">Select Your Registration Type</h2>
+        <p class="lead text-center text-muted mb-5">Please select the category that applies to you to view relevant events and pricing.</p>
+        
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Option 1: Student Registration -->
+            <div class="col-lg-5 col-md-6">
+                <div class="card h-100 shadow-lg text-center p-4 border-top border-primary border-5 cursor-pointer" 
+                     data-bs-toggle="modal" data-bs-target="#registrationModal"
+                     onclick="setRegistrationType('Student')">
+                    <div class="card-body">
+                        <i class="fas fa-user-graduate fa-4x text-primary mb-3"></i>
+                        <h4 class="card-title fw-bold">Student / Scholar</h4>
+                        <p class="card-text text-muted">For current B.Tech, M.Tech, Ph.D. students and research fellows.</p>
+                        <button type="button" class="btn btn-primary mt-3">Select Category</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Option 2: Professor / Other Registration -->
+            <div class="col-lg-5 col-md-6">
+                <div class="card h-100 shadow-lg text-center p-4 border-top border-success border-5 cursor-pointer" 
+                     data-bs-toggle="modal" data-bs-target="#registrationModal"
+                     onclick="setRegistrationType('Professor/Other')">
+                    <div class="card-body">
+                        <i class="fas fa-chalkboard-teacher fa-4x text-success mb-3"></i>
+                        <h4 class="card-title fw-bold">Professor / Industry / Other</h4>
+                        <p class="card-text text-muted">For Faculty, Industry Professionals, Doctors, and General Attendees.</p>
+                        <button type="button" class="btn btn-success mt-3">Select Category</button>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
+    
+    <!-- Registration Modal (Reused for both types) -->
+    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="registrationModalLabel">Event Registration - <span id="reg-type-display"></span></h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <div class="modal-body">
+              <p class="text-muted text-center">Please fill in your details for the selected event.</p>
+              
+              <!-- Success/Error Message Display -->
+              <div id="form-status-message" class="alert d-none" role="alert"></div>
+
+              <!-- Registration Form: CONFIGURED FOR FORMSPREE AJAX -->
+              <form id="event-registration-form" action="https://formspree.io/f/xkgqdnjd" method="POST" onsubmit="handleFormSubmission(event)">
+                  
+                  <input type="hidden" id="regTypeHidden" name="Registration_Type" value="">
+                  
+                  <!-- Event Selection (Dropdown) -->
+                  <div class="mb-4">
+                      <label for="eventSelect" class="form-label fw-bold">Select Event</label>
+                      <select class="form-select" id="eventSelect" name="eventSelected" required onchange="updateEventDetails()">
+                          <option selected disabled value="">Choose an Event...</option>
+                          <optgroup label="Upcoming Internships" id="internship-optgroup">
+                              <option value="Winter Internship: Verification of Digital System" class="internship-option">Skill-based Winter Internship: Verification of Digital System</option>
+                              <option value="Summer Internship: AI in Healthcare" class="internship-option">Skill-based Summer Internship: AI in Healthcare</option>
+                          </optgroup>
+                          <optgroup label="Upcoming Workshops & Symposiums">
+                              <option value="Symposium: Next-Gen VLSI Design">Symposium: Next-Gen VLSI Design</option>
+                              <option value="MIAAI-2026 Workshop">Distinguished Series 5th National workshop on Medical Image Analysis (MIAAI-2026)</option>
+                          </optgroup>
+                          <optgroup label="General">
+                              <option value="General Newsletter Subscription">General Newsletter Subscription (No Fee)</option>
+                          </optgroup>
+                      </select>
+                  </div>
+                  
+                  <!-- Dynamic Event Price Display -->
+                  <div id="price-display" class="alert alert-warning text-center fw-bold d-none mb-4" role="alert">
+                      Registration Fee: <span id="event-price"></span>
+                  </div>
+
+                  <!-- Personal Details -->
+                  <div class="mb-3">
+                      <label for="name" class="form-label">Name </label>
+                      <input type="text" class="form-control" id="name" name="Name" required>
+                  </div>
+                  
+                  <div class="mb-3">
+                      <label for="affiliation" class="form-label">Affiliation  (The same will be appeared in the certificate)</label>
+                      <input type="text" class="form-control" id="affiliation" name="Affiliation" required>
+                  </div>
+                  
+                  <!-- Designation Field - NOW TOGGLED -->
+                  <div class="mb-3" id="designation-group">
+                      <label for="designation" class="form-label">Your Designation </label>
+                      <select class="form-select" id="designation" name="Designation" required>
+                          <option selected disabled value="">Select Designation</option>
+                          <option value="Faculty">Faculty</option>
+                          <option value="Research Scholar">Research Scholar</option>
+                          <option value="Industrial Professional">Industrial Professional</option>
+                          <option value="Other">Other</option>
+                      </select>
+                  </div>
+                  
+                  <div class="mb-3">
+                      <label for="mailId" class="form-label">Mail Id </label>
+                      <input type="email" class="form-control" id="mailId" name="Mail_Id" required>
+                  </div>
+                  
+                  <div class="mb-3">
+                      <label for="phoneNumber" class="form-label">Phone Number </label>
+                      <input type="tel" class="form-control" id="phoneNumber" name="Phone_Number" required>
+                  </div>
+                  
+                  <!-- Payment Details Section -->
+                  <div id="payment-details-section" class="p-3 border rounded bg-light d-none">
+                      <h6 class="text-primary"><i class="fas fa-credit-card me-2"></i> Payment Details</h6>
+                      <p class="small text-muted mb-3">Please pay the registration fee and provide the Transaction ID below.</p>
+                      
+                      <div class="row mb-3">
+                          <!-- Bank Details -->
+                          <div class="col-md-6 mb-3 mb-md-0">
+                              <p class="small fw-bold mb-1">Account Details:</p>
+                              <ul class="list-unstyled small text-dark">
+                                  <li>Account name: Dr. Birendra Biswal</li>
+                                  <li>Account no: 183610100003040</li>
+                                  <li>Bank Name: Union Bank of India</li>
+                                  <li>IFSC code: UBIN0819191</li>
+                              </ul>
+                          </div>
+                          <!-- Scanner Image -->
+                          <div class="col-md-6 text-center">
+                              <p class="small fw-bold mb-1">Scan to pay registration fee:</p>
+                              <!-- Placeholder for Scanner Image -->
+                              <img src="/assets/images/QR scanner.png" alt="Scan to pay registration fee" class="img-fluid border rounded" style="max-height: 150px;">
+                              <p class="text-danger small mt-2">Please call or text to +91-8519802243 for any transaction failed issues.</p>
+                          </div>
+                      </div>
+                      
+                      <!-- Transaction ID Field (NEW REQUIREMENT) -->
+                      <label for="transactionId" class="form-label fw-bold">Transaction ID / Payment Reference </label>
+                      <input type="text" class="form-control" id="transactionId" name="Transaction_ID" required>
+                      <p class="small text-danger mt-1"></p>
+                  </div>
+                  
+                  <div class="form-check mb-4">
+                      <input class="form-check-input" type="checkbox" value="agreed" id="privacyCheckModal" name="privacyAgreement" required>
+                      <label class="form-check-label small text-muted" for="privacyCheckModal">
+                          I agree to the <a href="#" class="text-primary text-decoration-none">Privacy Policy</a> and confirm my details are correct.
+                      </label>
+                  </div>
+                  
+                  <div class="d-grid">
+                      <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-check-circle me-2"></i> Complete Registration</button>
+                  </div>
+              </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
 
     <!-- Footer --><footer class="bg-dark text-white pt-5 pb-3 mt-5">
         <div class="container">
@@ -150,23 +251,114 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" xintegrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBav0nC+EkJXxvXyF9m/bQdYhQc08E+S3" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
     
-    <!-- Inline Script for Form Submission Handler (Duplicated for reliability) -->
+    <!-- Inline Script for Form Submission Handler and Modal Logic -->
     <script>
-        // --- 4. Registration Form Submission Handler (AJAX for Formspree) ---
+        // --- Event Pricing and Logic Setup ---
+        const eventPricing = {
+            'Student': {
+                'Winter Internship: Verification of Digital System': 'Rs. 4000/-',
+                'Summer Internship: AI in Healthcare': 'Rs. 300/-',
+                'Symposium: Next-Gen VLSI Design': 'Rs. 100/-',
+                'MIAAI-2026 Workshop': 'Rs. 100/-',
+            
+            },
+            'Professor/Other': {
+                
+                'Symposium: Next-Gen VLSI Design': 'Rs. 500/-',
+                'MIAAI-2026 Workshop': 'Rs. 500/-',
+               
+            }
+        };
+
+        // --- 1. Set Registration Type on Modal Open ---
+        function setRegistrationType(type) {
+            document.getElementById('reg-type-display').textContent = type;
+            document.getElementById('regTypeHidden').value = type;
+            
+            // Get the designation group div
+            const designationGroup = document.getElementById('designation-group');
+            const designationSelect = document.getElementById('designation');
+            
+            // Get the internship optgroup and its options
+            const internshipOptGroup = document.getElementById('internship-optgroup');
+            const internshipOptions = document.querySelectorAll('.internship-option');
+
+            // --- FIX 1: Logic to hide Designation for 'Student' ---
+            if (type === 'Student') {
+                designationGroup.classList.add('d-none');
+                designationSelect.removeAttribute('required');
+                designationSelect.value = ''; 
+            } else {
+                designationGroup.classList.remove('d-none');
+                designationSelect.setAttribute('required', 'required');
+                designationSelect.value = '';
+            }
+            // --- END FIX 1 ---
+            
+            // --- FIX 2: Logic to hide Internships for 'Professor/Other' ---
+            if (type === 'Professor/Other') {
+                internshipOptGroup.style.display = 'none';
+                internshipOptions.forEach(opt => opt.disabled = true);
+            } else {
+                internshipOptGroup.style.display = 'block';
+                internshipOptions.forEach(opt => opt.disabled = false);
+            }
+            // --- END FIX 2 ---
+
+
+            // Reset fields and messages when modal opens
+            document.getElementById('event-registration-form').reset();
+            document.getElementById('price-display').classList.add('d-none');
+            document.getElementById('payment-details-section').classList.add('d-none');
+            
+            // Force update to hide payment fields if 'Choose an Event...' is selected
+            updateEventDetails();
+        }
+
+        // --- 2. Update Price/Payment on Event Selection (No Change) ---
+        function updateEventDetails() {
+            const selectedEvent = document.getElementById('eventSelect').value;
+            const regType = document.getElementById('regTypeHidden').value;
+            const priceDisplayDiv = document.getElementById('price-display');
+            const eventPriceSpan = document.getElementById('event-price');
+            const paymentSection = document.getElementById('payment-details-section');
+            const transactionIdInput = document.getElementById('transactionId');
+
+            if (selectedEvent && regType) {
+                const price = eventPricing[regType] ? eventPricing[regType][selectedEvent] : 'Price Not Found';
+                eventPriceSpan.textContent = price;
+                priceDisplayDiv.classList.remove('d-none');
+
+                if (price === 'Free') {
+                    // If free, hide payment section and remove required status
+                    paymentSection.classList.add('d-none');
+                    transactionIdInput.removeAttribute('required');
+                } else {
+                    // If fee is charged, show payment section and add required status
+                    paymentSection.classList.remove('d-none');
+                    transactionIdInput.setAttribute('required', 'required');
+                }
+            } else {
+                priceDisplayDiv.classList.add('d-none');
+                paymentSection.classList.add('d-none');
+                transactionIdInput.removeAttribute('required');
+            }
+        }
+        
+        // --- 3. Form Submission Handler (AJAX for Formspree) ---
         async function handleFormSubmission(e) {
-            e.preventDefault(); // Stop the browser from redirecting
+            e.preventDefault(); 
 
             const form = e.target;
             const statusMessage = document.getElementById('form-status-message');
             
+            // NOTE: Since file uploads are removed, we use standard FormData submission.
             const data = new FormData(form);
             const action = form.action;
 
-            // Clear previous messages and hide the status div
             statusMessage.classList.add('d-none');
             statusMessage.textContent = '';
             
-            // Temporary button disable for user feedback
             const submitButton = form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Registering...';
@@ -181,13 +373,15 @@
                 });
 
                 if (response.ok) {
-                    // Success message
-                    statusMessage.textContent = 'Registration Successful! You will receive a confirmation email shortly.';
+                    statusMessage.textContent = 'Registration Successful! You will receive a confirmation shortly.';
                     statusMessage.classList.remove('d-none', 'alert-danger');
                     statusMessage.classList.add('alert-success');
-                    form.reset(); // Clear form fields on success
+                    form.reset(); 
+                    // Hide price/payment details after success
+                    document.getElementById('price-display').classList.add('d-none');
+                    document.getElementById('payment-details-section').classList.add('d-none');
                 } else {
-                    // Error handling from Formspree
+                    // This handles errors when Formspree can't process the form (e.g., failed validation, service issue)
                     const responseData = await response.json();
                     let errorMessage = responseData.error || 'Oops! There was an error processing your registration.';
                     
@@ -196,17 +390,23 @@
                     statusMessage.classList.add('alert-danger');
                 }
             } catch (error) {
-                // Network error handling
                 console.error('Registration submission failed:', error);
                 statusMessage.textContent = 'Oops! Network error. Please check your connection and try again.';
                 statusMessage.classList.remove('d-none', 'alert-success');
                 statusMessage.classList.add('alert-danger');
             } finally {
-                // Restore button state
                 submitButton.disabled = false;
-                submitButton.innerHTML = '<i class="fas fa-check-circle me-2"></i> Submit Registration';
+                submitButton.innerHTML = '<i class="fas fa-check-circle me-2"></i> Complete Registration';
             }
         }
+        
+        // --- Initialize event listeners on DOM Load (No Change) ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('registrationModal');
+            modal.addEventListener('show.bs.modal', function () {
+                updateEventDetails(); 
+            });
+        });
     </script>
 </body>
 </html>
