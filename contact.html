@@ -16,7 +16,7 @@
             <div class="row align-items-center justify-content-center">
                 
                 <!-- Left Logo --><div class="position-absolute top-50 start-0 translate-middle-y ps-4 d-none d-sm-block" style="width: auto;">
-                    <div class="logo-placeholder"><img src='/assets/images/India logo[1].jpg' height="80"></div>
+                    <div class="logo-placeholder"><img src='/assets/images/India logo[1].jpg' height="80" onerror="this.onerror=null; this.src='https://placehold.co/80x80/007bff/ffffff?text=LOGO+1'"></div>
                 </div>
                 
                 <!-- Organization Name --><div class="col-12 text-center py-2 m-0">
@@ -25,7 +25,7 @@
                 </div>
                 
                 <!-- Right Logo --><div class="position-absolute top-50 end-0 translate-middle-y pe-4 d-none d-sm-block" style="width: auto;">
-                    <div class="logo-placeholder"><img src='/assets/images/cmis_logo.jpg' height="80"></div>
+                    <div class="logo-placeholder"><img src='/assets/images/cmis_logo.jpg' height="80" onerror="this.onerror=null; this.src='https://placehold.co/80x80/007bff/ffffff?text=LOGO+2'"></div>
                 </div>
                 
             </div>
@@ -48,7 +48,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
                     </li>
-                    <li class="nav-item">
+                     <li class="nav-item">
                         <a class="nav-link" href="research.html">Research</a>
                     </li>
                     <li class="nav-item">
@@ -60,10 +60,12 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="contact.html">Contact</a>
                     </li>
+                   
                 </ul>
             </div>
         </div>
     </nav>
+    
     
 
     <!-- Main Content starts here: Contact Section --><main class="container py-5">
@@ -80,11 +82,11 @@
                         <li class="mb-2"><strong>Professor & Dean (R&D)</strong></li>
                         <li class="mb-3">GVP College of Engineering, Visakhapatnam, India</li>
                         
-                        <li class="mb-2"><i class="fas fa-phone me-3"></i> 9000405565 </li>
+                        <li class="mb-2"><i class="fas fa-phone me-3"></i> 9000405565</li>
                         <li class="mb-2"><i class="fas fa-envelope me-3"></i> <a href="mailto:birendrabiswal@gvpce.ac.in" class="text-white text-decoration-none">birendrabiswal@gvpce.ac.in</a></li>
                         <li class="mb-3"><i class="fas fa-envelope me-3"></i> <a href="mailto:cmis@gvpce.ac.in" class="text-white text-decoration-none">cmis@gvpce.ac.in</a></li>
                         
-                        <li class="mb-3"><i class="fas fa-clock me-3"></i> Mon - Sat: 9 AM to 5 PM </li>
+                        <li class="mb-3"><i class="fas fa-clock me-3"></i> Mon - Sat: 9 AM to 5 PM</li>
                     </ul>
                     
                     <div class="mt-4 border-top border-light pt-3">
@@ -101,11 +103,12 @@
                 <div class="card shadow-lg border-0 p-4 rounded-3">
                     <h4 class="card-title mb-4 text-primary">Send Us a Message</h4>
                     
-                    <!-- Success/Error Message Display -->
-                    <div id="form-status-message" class="alert d-none" role="alert"></div>
-
-                    <!-- Form Action now calls the global JS function handleFormSubmission(event) -->
-                    <form id="contact-form" action="https://formspree.io/f/xqayvvre" method="POST" onsubmit="handleFormSubmission(event)">
+                    <!-- Form CONFIGURED FOR FORMSPREE (Non-AJAX Redirect) -->
+                    <form id="contact-form" action="https://formspree.io/f/xqayvvre" method="POST">
+                        
+                        <!-- FIX: Hidden field to CC submission to cmis@gvpce.ac.in -->
+                        <input type="hidden" name="_cc" value="geethapavani@gvpce.ac.in">
+                        
                         <div class="mb-3">
                             <label for="name" class="form-label">Full Name</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -123,6 +126,7 @@
                             <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                         </div>
                         <div class="d-grid">
+                            <!-- Formspree handles the submission and redirects to its success page -->
                             <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane me-2"></i> Send Inquiry</button>
                         </div>
                     </form>
@@ -155,64 +159,5 @@
     <!-- Bootstrap and Custom JS --><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" xintegrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/Qg4YwYxI5F0I+Qp6C19qEWpL8" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" xintegrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBav0nC+EkJXxvXyF9m/bQdYhQc08E+S3" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
-    
-    <!-- Inline Script for Form Submission Handler -->
-    <script>
-        // --- 4. Contact Form Submission Handler (AJAX for Formspree) ---
-        async function handleFormSubmission(e) {
-            e.preventDefault(); // Stop the browser from redirecting
-
-            const form = e.target;
-            const statusMessage = document.getElementById('form-status-message');
-            
-            const data = new FormData(form);
-            const action = form.action;
-
-            // Clear previous messages and hide the status div
-            statusMessage.classList.add('d-none');
-            statusMessage.textContent = '';
-            
-            // Temporary button disable for user feedback
-            const submitButton = form.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Sending...';
-
-            try {
-                const response = await fetch(action, {
-                    method: 'POST',
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json' // Formspree requirement for AJAX submission
-                    }
-                });
-
-                if (response.ok) {
-                    // Success message
-                    statusMessage.textContent = 'Message Sent Successfully! We will respond shortly.';
-                    statusMessage.classList.remove('d-none', 'alert-danger');
-                    statusMessage.classList.add('alert-success');
-                    form.reset(); // Clear form fields on success
-                } else {
-                    // Error handling from Formspree
-                    const responseData = await response.json();
-                    let errorMessage = responseData.error || 'Oops! There was an error submitting your form.';
-                    
-                    statusMessage.textContent = errorMessage;
-                    statusMessage.classList.remove('d-none', 'alert-success');
-                    statusMessage.classList.add('alert-danger');
-                }
-            } catch (error) {
-                // Network error handling
-                console.error('Form submission failed:', error);
-                statusMessage.textContent = 'Oops! Network error. Please check your connection and try again.';
-                statusMessage.classList.remove('d-none', 'alert-success');
-                statusMessage.classList.add('alert-danger');
-            } finally {
-                // Restore button state
-                submitButton.disabled = false;
-                submitButton.innerHTML = '<i class="fas fa-paper-plane me-2"></i> Send Inquiry';
-            }
-        }
-    </script>
 </body>
 </html>
