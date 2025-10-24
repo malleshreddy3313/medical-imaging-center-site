@@ -90,50 +90,86 @@
                     <li>To sensitize, educate & empower low-income people through technology-enabled community development programs.</li>
                 </ul>
             </div>
-            <div class="col-lg-6">
-                <div class="p-4 bg-light rounded-3 shadow-sm border border-primary">
-                    <h4 class="text-primary"><i class="fas fa-user-tie me-2"></i> Leadership Message</h4>
-                    <blockquote class="blockquote">
-                        <p class="mb-0 fst-italic">"At CMIS, we believe that the clearest view leads to the best care. Our team is committed to pushing the boundaries of what is possible in medical visualization and analysis."</p>
-                        <footer class="blockquote-footer mt-2">Dr. Birendra Biswal, <cite title="Source Title">Lead Mentor CMIS</cite></footer>
-                    </blockquote>
+                  <div class="col-lg-6">
+                <div class="p-4 bg-light rounded-3 shadow-lg border border-primary">
+                    <h4 class="text-primary mb-3"><i class="fas fa-bullhorn me-2"></i> Leadership Messages</h4>
+                    
+                    <div id="leadershipCarousel" class="carousel slide" data-bs-ride="carousel">
+                        
+                        <div class="carousel-inner">
+                            <!-- Slide 1: Dr. Birendra Biswal (NOW ACTIVE/FIRST) -->
+                            <div class="carousel-item active">
+                                <blockquote class="blockquote">
+                                    <p class="mb-0 fst-italic">"At the Centre for Medical Imaging Studies (CMIS), we believe that true research excellence stems from hard work, honesty, and unwavering commitment. Scientific discovery is not merely about innovation—it is about perseverance, integrity, and the constant pursuit of truth. Every challenge we face in research is an opportunity to learn, evolve, and make meaningful contributions to the betterment of humanity"</p>
+                                    <footer class="blockquote-footer mt-2">Dr. Birendra Biswal, <cite title="Source Title">Lead Mentor CMIS</cite></footer>
+                                </blockquote>
+                            </div>
+                            
+                            <!-- Slide 2: Dr. A.B. Koteswara Rao (NOW SECOND) -->
+                            <div class="carousel-item">
+                                <blockquote class="blockquote">
+                                    <p class="mb-0 fst-italic">"The dedication to research excellence at CMIS elevates the entire institution. We are committed to fostering the interdisciplinary environment necessary for breakthrough innovations in medical technology."</p>
+                                    <footer class="blockquote-footer mt-2">Dr. A.B. Koteswara Rao, <cite title="Source Title">Principal, GVPCE (A)</cite></footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                        
+                        <!-- Carousel Controls -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#leadershipCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon bg-dark p-2 rounded-circle" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#leadershipCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon bg-dark p-2 rounded-circle" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
+                
                 <div class="mt-4 text-center">
                      <a href="contact.html" class="btn btn-lg btn-outline-primary"><i class="fas fa-handshake me-2"></i> Partner with Us</a>
                 </div>
             </div>
         </div>
         
+        
         <!-- NEW: Our Team Section - UPDATED STRUCTURE --><section id="our-team" class="py-5 border-top">
             <h2 class="display-6 fw-bold text-center text-primary mb-5">Our Esteemed Team</h2>
 
             <!-- Tier 1: Mentors/Leadership (2 persons) -->
             <h3 class="fw-bold text-center text-secondary mb-4">Mentors & Leadership</h3>
-            <div class="row justify-content-center mb-5 g-4">
-                
-                <!-- 1. Dr. Birendra Biswal -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card shadow-lg text-center p-3 h-100 border-top border-warning border-5">
-                        <img src="/assets/images/Dr. Birendra.jpg" class="rounded-circle mx-auto mb-3" alt="Dr. Birendra Biswal Photo" style="width: 150px; height: 150px; object-fit: cover;">
-                        <h5 class="fw-bold text-primary mb-0">Dr. Birendra Biswal</h5>
-                        <p class="text-muted small mb-1">Lead Mentor, CMIS</p>
-                        <p class="card-text small mb-0">Professor & Dean (R&D),</p>
-                        <p class="card-text small mb-0">GVP College of Engineering (A), Visakhapatnam, India</p>
-                    </div>
-                </div>
-                
-                <!-- 2. Dr. A.B. Koteswara Rao -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card shadow-lg text-center p-3 h-100 border-top border-warning border-5">
-                        <img src="/assets/images/Dr. A B Koteswara Rao.jpeg" class="rounded-circle mx-auto mb-3" alt="Dr. A.B. Koteswara Rao Photo" style="width: 150px; height: 150px; object-fit: cover;">
-                        <h5 class="fw-bold text-primary mb-0">Dr. A.B. Koteswara Rao</h5>
-                        <p class="text-muted small mb-1">Chairman, CMIS</p>
-                        <p class="card-text small mb-0">Principal,</p>
-                        <p class="card-text small mb-0">GVP College of Engineering (A), Visakhapatnam, India</p>
-                    </div>
-                </div>
+           <div class="row justify-content-center mb-5 g-4 flex-column align-items-center">
+    
+    <!-- Dr. A.B. Koteswara Rao (TOP) -->
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card shadow-lg text-center p-4 h-100 border-top border-warning border-4" style="max-width: 360px; margin: 0 auto;">
+            <img src="/assets/images/Dr. A B Koteswara Rao.jpeg" 
+                 class="rounded-circle mx-auto mb-3" 
+                 alt="Dr. A.B. Koteswara Rao Photo" 
+                 style="width:130px; height:130px; object-fit:cover;">
+            <h5 class="fw-bold text-primary mb-0">Dr. A.B. Koteswara Rao</h5>
+            <p class="card-text small mb-0">Principal</p>
+            <p class="card-text small mb-0">GVP College of Engineering (A), Visakhapatnam, India</p>
+        </div>
+    </div>
 
-            </div>
+    <!-- Dr. Birendra Biswal (BOTTOM) -->
+    <div class="col-lg-4 col-md-6">
+        <div class="card shadow-lg text-center p-4 h-100 border-top border-warning border-4" style="max-width: 360px; margin: 0 auto;">
+            <img src="/assets/images/Dr. Birendra.jpg" 
+                 class="rounded-circle mx-auto mb-3" 
+                 alt="Dr. Birendra Biswal Photo" 
+                 style="width:130px; height:130px; object-fit:cover;">
+            <h5 class="fw-bold text-primary mb-0">Dr. Birendra Biswal</h5>
+            <p class="text-muted small mb-1">Lead Mentor, CMIS</p>
+            <p class="card-text small mb-0">Professor & Dean (R&D)</p>
+            <p class="card-text small mb-0">GVP College of Engineering (A), Visakhapatnam, India</p>
+        </div>
+    </div>
+
+</div>
+
+
 
             <!-- Tier 2: Key Members (6 people) -->
             <h3 class="fw-bold text-center text-secondary mb-4 mt-5">Key Members (Faculty & Scientists)</h3>
