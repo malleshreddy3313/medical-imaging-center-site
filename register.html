@@ -7,6 +7,12 @@
     <!-- Bootstrap CSS --><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9O1+8WbHAWfK3+fQyqTzEAgpAIT2wK3YyYJ7+32sL45U9hQ4" crossorigin="anonymous">
     <!-- Font Awesome (for icons) --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- Custom CSS --><link rel="stylesheet" href="style.css">
+    <style>
+        /* Ensures the category selection cards are clickable */
+        .cursor-pointer {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,7 +26,7 @@
                 </div>
                 
                 <!-- Organization Name --><div class="col-12 text-center py-2 m-0">
-                    <h1 class="h4 fw-bold text-primary mb-0">CENTER FOR MEDICAL IMAGING STUDIES (CMIS)</h1>
+                    <h1 class="h4 fw-bold text-primary mb-0">Center for Medical Imaging Studies (CMIS)</h1>
                     <p class="small text-muted mb-0">Innovation Beyond Imagination</p>
                 </div>
                 
@@ -60,6 +66,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
+                    
                 </ul>
             </div>
         </div>
@@ -73,22 +80,36 @@
         
         <div class="row g-4 justify-content-center">
             
-            <!-- Option 1: Student Registration -->
-            <div class="col-lg-5 col-md-6">
+            <!-- Option 1: Student Registration (B.Tech/M.Tech) -->
+            <div class="col-lg-4 col-md-6">
                 <div class="card h-100 shadow-lg text-center p-4 border-top border-primary border-5 cursor-pointer" 
                      data-bs-toggle="modal" data-bs-target="#registrationModal"
                      onclick="setRegistrationType('Student')">
                     <div class="card-body">
-                        <i class="fas fa-user-graduate fa-4x text-primary mb-3"></i>
-                        <h4 class="card-title fw-bold">Student / Scholar</h4>
-                        <p class="card-text text-muted">For current B.Tech, M.Tech, Ph.D. students and research fellows.</p>
+                        <i class="fas fa-school fa-4x text-primary mb-3"></i>
+                        <h4 class="card-title fw-bold">Student</h4>
+                        <p class="card-text text-muted">For current B.Tech/M.Tech students.</p>
                         <button type="button" class="btn btn-primary mt-3">Select Category</button>
                     </div>
                 </div>
             </div>
+
+            <!-- Option 2: Scholar Registration (Ph.D./JRF/Post-Doc) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-lg text-center p-4 border-top border-warning border-5 cursor-pointer" 
+                     data-bs-toggle="modal" data-bs-target="#registrationModal"
+                     onclick="setRegistrationType('Scholar')">
+                    <div class="card-body">
+                        <i class="fas fa-graduation-cap fa-4x text-warning mb-3"></i>
+                        <h4 class="card-title fw-bold">Scholar / Researcher</h4>
+                        <p class="card-text text-muted">For PhD, JRF, Post-Doctoral scholars, and other research fellows.</p>
+                        <button type="button" class="btn btn-warning text-dark mt-3">Select Category</button>
+                    </div>
+                </div>
+            </div>
             
-            <!-- Option 2: Professor / Other Registration -->
-            <div class="col-lg-5 col-md-6">
+            <!-- Option 3: Professor / Other Registration -->
+            <div class="col-lg-4 col-md-6">
                 <div class="card h-100 shadow-lg text-center p-4 border-top border-success border-5 cursor-pointer" 
                      data-bs-toggle="modal" data-bs-target="#registrationModal"
                      onclick="setRegistrationType('Professor/Other')">
@@ -103,7 +124,7 @@
         </div>
     </main>
     
-    <!-- Registration Modal (Reused for both types) -->
+    <!-- Registration Modal (Reused for all types) -->
     <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -124,7 +145,7 @@
                   
                   <input type="hidden" id="regTypeHidden" name="Registration_Type" value="">
                   
-                  <!-- FIX: Add hidden field to CC submission to cmis@gvpce.ac.in -->
+                  <!-- FIX: Hidden field to CC submission to cmis@gvpce.ac.in -->
                   <input type="hidden" name="_cc" value="geethapavani@gvpce.ac.in">
                   
                   <!-- Event Selection (Dropdown) -->
@@ -133,16 +154,14 @@
                       <select class="form-select" id="eventSelect" name="eventSelected" required onchange="updateEventDetails()">
                           <option selected disabled value="">Choose an Event...</option>
                           <optgroup label="Upcoming Internships" id="internship-optgroup">
-                              <option value="Winter Internship: Verification of Digital System" class="internship-option">Skill-based Winter Internship: Verification of Digital System</option>
+                              <option value="Winter Internship: Verification of Digital System using System Verilog" class="internship-option">Skill-based Winter Internship: Verification of Digital System using System Verilog</option>
                               <option value="Summer Internship: AI in Healthcare" class="internship-option">Skill-based Summer Internship: AI in Healthcare</option>
                           </optgroup>
-                          <optgroup label="Upcoming Workshops & Symposiums">
-                              <option value="Symposium: Next-Gen VLSI Design">Symposium: Next-Gen VLSI Design</option>
-                              <option value="MIAAI-2026 Workshop">Distinguished Series 5th National workshop on Medical Image Analysis (MIAAI-2026)</option>
+                          <optgroup label="Upcoming Workshops & Symposiums" id="workshop-optgroup">
+                              <option value="Symposium: Next-Gen VLSI Design for the Semiconductor Era" class="workshop-option">Symposium: Next-Gen VLSI Design for the Semiconductor Era</option>
+                              <option value="MIAAI-2026 Workshop" class="workshop-option">Distinguished Series 5th National workshop on Medical Image Analysis (MIAAI-2026)</option>
                           </optgroup>
-                          <optgroup label="General">
-                              <option value="General Newsletter Subscription">General Newsletter Subscription (No Fee)</option>
-                          </optgroup>
+                          <!-- Removed General Newsletter option -->
                       </select>
                   </div>
                   
@@ -153,18 +172,18 @@
 
                   <!-- Personal Details -->
                   <div class="mb-3">
-                      <label for="name" class="form-label">Name </label>
+                      <label for="name" class="form-label">Name *</label>
                       <input type="text" class="form-control" id="name" name="Name" required>
                   </div>
                   
                   <div class="mb-3">
-                      <label for="affiliation" class="form-label">Affiliation  (The same will be appeared in the certificate)</label>
+                      <label for="affiliation" class="form-label">Affiliation * (The same will be appeared in the certificate)</label>
                       <input type="text" class="form-control" id="affiliation" name="Affiliation" required>
                   </div>
                   
                   <!-- Designation Field - NOW TOGGLED -->
                   <div class="mb-3" id="designation-group">
-                      <label for="designation" class="form-label">Your Designation </label>
+                      <label for="designation" class="form-label">Your Designation *</label>
                       <select class="form-select" id="designation" name="Designation" required>
                           <option selected disabled value="">Select Designation</option>
                           <option value="Faculty">Faculty</option>
@@ -175,19 +194,19 @@
                   </div>
                   
                   <div class="mb-3">
-                      <label for="mailId" class="form-label">Mail Id </label>
+                      <label for="mailId" class="form-label">Mail Id *</label>
                       <input type="email" class="form-control" id="mailId" name="Mail_Id" required>
                   </div>
                   
                   <div class="mb-3">
-                      <label for="phoneNumber" class="form-label">Phone Number </label>
+                      <label for="phoneNumber" class="form-label">Phone Number *</label>
                       <input type="tel" class="form-control" id="phoneNumber" name="Phone_Number" required>
                   </div>
                   
                   <!-- Payment Details Section -->
                   <div id="payment-details-section" class="p-3 border rounded bg-light d-none">
                       <h6 class="text-primary"><i class="fas fa-credit-card me-2"></i> Payment Details</h6>
-                      <p class="small text-muted mb-3">Please pay the registration fee and provide the Transaction ID below.</p>
+                      <p class="small text-muted mb-3">Please pay the registration fee and provide the Transaction ID below. **The payment receipt must be emailed separately to cmis@gvpce.ac.in**.</p>
                       
                       <div class="row mb-3">
                           <!-- Bank Details -->
@@ -204,13 +223,13 @@
                           <div class="col-md-6 text-center">
                               <p class="small fw-bold mb-1">Scan to pay registration fee:</p>
                               <!-- Placeholder for Scanner Image -->
-                              <img src="/assets/images/QR scanner.png" alt="Scan to pay registration fee" class="img-fluid border rounded" style="max-height: 150px;">
-                              <p class="text-danger small mt-2">Please call or text to +91-8519802243 for any transaction failed issues.</p>
+                              <img src="https://placehold.co/150x150/007bff/ffffff?text=SCAN+QR" alt="Scan to pay registration fee" class="img-fluid border rounded" style="max-height: 150px;">
+                              <p class="text-danger small mt-2">Please call or text to **+91-8519802243** for any transaction failed issues.</p>
                           </div>
                       </div>
                       
-                      <!-- Transaction ID Field (NEW REQUIREMENT) -->
-                      <label for="transactionId" class="form-label fw-bold">Transaction ID / Payment Reference </label>
+                      <!-- Transaction ID Field -->
+                      <label for="transactionId" class="form-label fw-bold">Transaction ID / Payment Reference *</label>
                       <input type="text" class="form-control" id="transactionId" name="Transaction_ID" required>
                       <p class="small text-danger mt-1"></p>
                   </div>
@@ -239,7 +258,7 @@
                     <h5 class="fw-bold mb-3 text-warning">Quick Links</h5>
                     <ul class="list-unstyled d-flex justify-content-center flex-wrap">
                         <li class="mx-3"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-                        <li class="mx-3"><a href="about.html" class="text-white text-decoration-none">About us</a></li>
+                           <li class="mx-3"><a href="about.html" class="text-white text-decoration-none">About us</a></li>
                         <li class="mx-3"><a href="research.html" class="text-white text-decoration-none">Research</a></li>
                         <li class="mx-3"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
                     </ul>
@@ -261,22 +280,25 @@
         // --- Event Pricing and Logic Setup ---
         const eventPricing = {
             'Student': {
-                'Winter Internship: Verification of Digital System': 'Rs. 4000/-',
-                'Summer Internship: AI in Healthcare': 'Rs. 300/-',
-                'Symposium: Next-Gen VLSI Design': 'Rs. 100/-',
-                'MIAAI-2026 Workshop': 'Rs. 100/-',
-                'General Newsletter Subscription': 'Free', // Added for completeness
-            
+                'Winter Internship: Verification of Digital System using System Verilog': 'Rs. 4000/-',
+                'Summer Internship: AI in Healthcare': 'Rs. 4000/-',
+                'Symposium: Next-Gen VLSI Design for the Semiconductor Era': 'Rs. 750/-',
+                'MIAAI-2026 Workshop': 'Rs. 500/-',
+            },
+            'Scholar': {
+                'Winter Internship: Verification of Digital System using System Verilog': 'Rs. 4000/-',
+                'Summer Internship: AI in Healthcare': 'Rs. 4000/-',
+                'Symposium: Next-Gen VLSI Design for the Semiconductor Era': 'Rs. 1500/-',
+                'MIAAI-2026 Workshop': 'Rs. 800/-',
             },
             'Professor/Other': {
-                
-                'Symposium: Next-Gen VLSI Design': 'Rs. 500/-',
-                'MIAAI-2026 Workshop': 'Rs. 500/-',
-                'General Newsletter Subscription': 'Free', // Added for completeness
-               
+                'Winter Internship: Verification of Digital System using System Verilog': 'Rs. 4000/-',
+                'Summer Internship: AI in Healthcare': 'Rs. 4000/-',
+                'Symposium: Next-Gen VLSI Design for the Semiconductor Era': 'Rs. 3000/-',
+                'MIAAI-2026 Workshop': 'Rs. 1500/-',
             }
         };
-
+        
         // --- 1. Set Registration Type on Modal Open ---
         function setRegistrationType(type) {
             document.getElementById('reg-type-display').textContent = type;
@@ -288,29 +310,34 @@
             
             // Get the internship optgroup and its options
             const internshipOptGroup = document.getElementById('internship-optgroup');
-            const internshipOptions = document.querySelectorAll('.internship-option');
+            const workshopOptGroup = document.getElementById('workshop-optgroup');
 
-            // --- FIX 1: Logic to hide Designation for 'Student' ---
-            if (type === 'Student') {
+            // --- Reset Dropdown Visibility (Start fresh on every category click) ---
+            const allOptGroups = [internshipOptGroup, workshopOptGroup];
+            allOptGroups.forEach(og => {
+                og.style.display = 'block';
+                Array.from(og.options).forEach(opt => opt.disabled = false);
+            });
+            
+            // --- Logic based on selected type ---
+            if (type === 'Student' || type === 'Scholar') {
                 designationGroup.classList.add('d-none');
                 designationSelect.removeAttribute('required');
-                designationSelect.value = ''; 
-            } else {
+                designationSelect.value = '';
+
+                // Students and Scholars see all internships and workshops
+                // NOTE: Student designation is handled by hiding the group.
+            } 
+            else if (type === 'Professor/Other') {
                 designationGroup.classList.remove('d-none');
                 designationSelect.setAttribute('required', 'required');
                 designationSelect.value = '';
-            }
-            // --- END FIX 1 ---
-            
-            // --- FIX 2: Logic to hide Internships for 'Professor/Other' ---
-            if (type === 'Professor/Other') {
+                
+                // Professors/Others DO NOT see internships
                 internshipOptGroup.style.display = 'none';
-                internshipOptions.forEach(opt => opt.disabled = true);
-            } else {
-                internshipOptGroup.style.display = 'block';
-                internshipOptions.forEach(opt => opt.disabled = false);
+                Array.from(internshipOptGroup.options).forEach(opt => opt.disabled = true);
             }
-            // --- END FIX 2 ---
+            // --- END Logic ---
 
 
             // Reset fields and messages when modal opens
@@ -330,25 +357,29 @@
             const eventPriceSpan = document.getElementById('event-price');
             const paymentSection = document.getElementById('payment-details-section');
             const transactionIdInput = document.getElementById('transactionId');
-
-            if (selectedEvent && regType) {
-                const price = eventPricing[regType] ? eventPricing[regType][selectedEvent] : 'Price Not Found';
-                eventPriceSpan.textContent = price;
-                priceDisplayDiv.classList.remove('d-none');
-
-                if (price === 'Free') {
-                    // If free, hide payment section and remove required status
-                    paymentSection.classList.add('d-none');
-                    transactionIdInput.removeAttribute('required');
-                } else {
-                    // If fee is charged, show payment section and add required status
-                    paymentSection.classList.remove('d-none');
-                    transactionIdInput.setAttribute('required', 'required');
-                }
-            } else {
+            
+            // Ensure logic doesn't break if a hidden/disabled option is selected upon category change
+            if (!eventPricing[regType] || !eventPricing[regType][selectedEvent]) {
                 priceDisplayDiv.classList.add('d-none');
                 paymentSection.classList.add('d-none');
                 transactionIdInput.removeAttribute('required');
+                return;
+            }
+
+            const price = eventPricing[regType][selectedEvent];
+            eventPriceSpan.textContent = price;
+            priceDisplayDiv.classList.remove('d-none');
+
+            // NOTE: If the price is 0 or Free (though 'Free' option was removed), 
+            // we treat it as free to hide payment section.
+            if (price === 'Free' || price === 'Rs. 0/-') { 
+                // If free, hide payment section and remove required status
+                paymentSection.classList.add('d-none');
+                transactionIdInput.removeAttribute('required');
+            } else {
+                // If fee is charged, show payment section and add required status
+                paymentSection.classList.remove('d-none');
+                transactionIdInput.setAttribute('required', 'required');
             }
         }
         
@@ -359,7 +390,6 @@
             const form = e.target;
             const statusMessage = document.getElementById('form-status-message');
             
-            // NOTE: Since file uploads are removed, we use standard FormData submission.
             const data = new FormData(form);
             const action = form.action;
 
@@ -375,12 +405,12 @@
                     method: 'POST',
                     body: data,
                     headers: {
-                        'Accept': 'application/json' // Formspree requirement for AJAX submission
+                        'Accept': 'application/json'
                     }
                 });
 
                 if (response.ok) {
-                    statusMessage.textContent = 'Registration Successful!. You will receive a confirmation shortly.';
+                    statusMessage.textContent = 'Registration Successful! Please remember to email your payment receipt to cmis@gvpce.ac.in. You will receive a confirmation shortly.';
                     statusMessage.classList.remove('d-none', 'alert-danger');
                     statusMessage.classList.add('alert-success');
                     form.reset(); 
@@ -388,7 +418,6 @@
                     document.getElementById('price-display').classList.add('d-none');
                     document.getElementById('payment-details-section').classList.add('d-none');
                 } else {
-                    // This handles errors when Formspree can't process the form (e.g., failed validation, service issue)
                     const responseData = await response.json();
                     let errorMessage = responseData.error || 'Oops! There was an error processing your registration.';
                     
@@ -417,3 +446,4 @@
     </script>
 </body>
 </html>
+
