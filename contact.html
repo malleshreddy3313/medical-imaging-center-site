@@ -16,7 +16,7 @@
             <div class="row align-items-center justify-content-center">
                 
                 <!-- Left Logo --><div class="position-absolute top-50 start-0 translate-middle-y ps-4 d-none d-sm-block" style="width: auto;">
-                    <div class="logo-placeholder"><img src='/assets/images/India logo[1].jpg' height="80" onerror="this.onerror=null; this.src='https://placehold.co/80x80/007bff/ffffff?text=LOGO+1'"></div>
+                    <div class="logo-placeholder"><img src='assets/images/India logo[1].jpg' height="80" onerror="this.onerror=null; this.src='https://placehold.co/80x80/007bff/ffffff?text=LOGO+1'"></div>
                 </div>
                 
                 <!-- Organization Name --><div class="col-12 text-center py-2 m-0">
@@ -25,7 +25,7 @@
                 </div>
                 
                 <!-- Right Logo --><div class="position-absolute top-50 end-0 translate-middle-y pe-4 d-none d-sm-block" style="width: auto;">
-                    <div class="logo-placeholder"><img src='/assets/images/cmis_logo.jpg' height="80" onerror="this.onerror=null; this.src='https://placehold.co/80x80/007bff/ffffff?text=LOGO+2'"></div>
+                    <div class="logo-placeholder"><img src='assets/images/cmis_logo.jpg' height="80" onerror="this.onerror=null; this.src='https://placehold.co/80x80/007bff/ffffff?text=LOGO+2'"></div>
                 </div>
                 
             </div>
@@ -48,9 +48,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="research.html">Research</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="events.html">Events</a>
                     </li>
@@ -60,13 +57,31 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="contact.html">Contact</a>
                     </li>
-                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="research.html">Research</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     
-    
+    <!-- Scrolling Upcoming Events Ticker - NON-STICKY (Scrolls off the screen) --><section id="event-ticker" class="bg-warning text-dark py-1 overflow-hidden shadow-sm">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <!-- The ticker-content element is where the JS applies the scrolling animation --><div class="d-flex align-items-center">
+                        <span class="badge bg-danger me-3">UPCOMING</span>
+                        <div class="ticker-content" style="white-space: nowrap;">
+                            <span class="me-5">Webinar on AI in Diagnostics - Nov 15th, 2025 |</span>
+                            <span class="me-5">Annual Research Symposium Registration Open! - Deadline Dec 1st, 2025 |</span>
+                            <span class="me-5">Hands-on MRI Workshop - Jan 10th, 2026 |</span>
+                            <span class="me-5">Webinar on AI in Diagnostics - Nov 15th, 2025 |</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Main Content starts here: Contact Section --><main class="container py-5">
         <h2 class="display-5 fw-bold text-center text-primary mb-4">Contact Our Center</h2>
@@ -82,7 +97,7 @@
                         <li class="mb-2"><strong>Professor & Dean (R&D)</strong></li>
                         <li class="mb-3">GVP College of Engineering, Visakhapatnam, India</li>
                         
-                        <li class="mb-2"><i class="fas fa-phone me-3"></i> 9000405565</li>
+                        <li class="mb-2"><i class="fas fa-phone me-3"></i> 9000405565 | 8519802243</li>
                         <li class="mb-2"><i class="fas fa-envelope me-3"></i> <a href="mailto:birendrabiswal@gvpce.ac.in" class="text-white text-decoration-none">birendrabiswal@gvpce.ac.in</a></li>
                         <li class="mb-3"><i class="fas fa-envelope me-3"></i> <a href="mailto:cmis@gvpce.ac.in" class="text-white text-decoration-none">cmis@gvpce.ac.in</a></li>
                         
@@ -106,7 +121,7 @@
                     <!-- Form CONFIGURED FOR FORMSPREE (Non-AJAX Redirect) -->
                     <form id="contact-form" action="https://formspree.io/f/xqayvvre" method="POST">
                         
-                        <!-- FIX: Hidden field to CC submission to cmis@gvpce.ac.in -->
+                        <!-- Hidden field to CC submission to geethapavani@gvpce.ac.in -->
                         <input type="hidden" name="_cc" value="geethapavani@gvpce.ac.in">
                         
                         <div class="mb-3">
@@ -143,7 +158,6 @@
                     <h5 class="fw-bold mb-3 text-warning">Quick Links</h5>
                     <ul class="list-unstyled d-flex justify-content-center flex-wrap">
                         <li class="mx-3"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-                        <li class="mx-3"><a href="about.html" class="text-white text-decoration-none">About us</a></li>
                         <li class="mx-3"><a href="research.html" class="text-white text-decoration-none">Research</a></li>
                         <li class="mx-3"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
                     </ul>
